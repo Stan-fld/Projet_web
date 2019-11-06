@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "api",
   "version": "1.0.0",
   "description": "Server pour API REST",
   "main": "server.js",
@@ -15,8 +15,5 @@
   "bugs": {
     "url": "https://github.com/Stan-fld/Projet_web/issues"
   },
-  "homepage": "https://github.com/Stan-fld/Projet_web#readme",
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+  "homepage": "https://github.com/Stan-fld/Projet_web#readme"
 }
