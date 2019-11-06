@@ -1,0 +1,19 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Server pour API REST",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stan-fld/Projet_web.git"
+  },
+  "author": "Stanislas FOILLARD",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Stan-fld/Projet_web/issues"
+  },
+  "homepage": "https://github.com/Stan-fld/Projet_web#readme"
+}
