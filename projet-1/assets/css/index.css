@@ -1,0 +1,124 @@
+body{
+    background-color:white;
+
+    font-family: sans-serif;
+
+}
+
+h1{
+    color: white;
+}
+
+h5{
+    color: white;
+}
+h3{
+    color:#FFC252 ;
+}
+
+
+footer .fa-twitter
+{
+    color: white;
+}
+footer .fa-youtube
+{
+    color:white;
+}
+footer .fa-instagram
+{
+    color: white;
+}
+footer .fa-facebook-square
+{
+    color: white;
+}
+
+
+footer .fa-twitter:hover
+{
+    color: #FFC252!important;
+}
+footer .fa-youtube:hover
+{
+    color: #FFC252!important;
+}
+footer .fa-instagram:hover
+{
+    color: #FFC252!important;
+}
+footer .fa-facebook-square:hover
+{
+    color: #FFC252!important;
+}
+
+footer {
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: black;
+    position: fixed;
+position: absolute;
+}
+footer a{
+    color: white;
+}
+footer a:hover{
+    color:#FFC252 ;
+}
+#bandeau{
+
+    font-size: large;
+    text-transform: uppercase;
+    background-color: black;
+    position: fixed;
+    z-index: 1;
+    margin-bottom: 10%;
+}
+#bandeau a:hover{
+
+    color:#FFC252 ;
+}
+#bandeau button{
+    background-color:#FFC252 ;
+}
+#bandeau button:hover{
+    background-color: #5D89DA;
+}
+
+#bandeau .fa-shopping-basket{
+    color:  #FFC252;
+}
+#bandeau .fa-address-book{
+    color:  #FFC252;
+}
+#bandeau .fa-map{
+    color:  #FFC252;
+}
+#bandeau .fa-sign-in-alt{
+    color:  #FFC252;
+}
+#bandeau .fa-sign-out-alt{
+    color:  #FFC252;
+}
+#bandeau .fa-shopping-cart {
+    color:  #FFC252;
+}
+#jumbotron{
+
+    background-color: #5D89DA;
+}
+#jumbotron2{
+
+    background-color: #FFC252;
+}
+
+button{
+    background-color: white;
+    border-radius: 15%;
+}
+button:hover{
+    background-color: #FFC252;
+    color: white;
+}
