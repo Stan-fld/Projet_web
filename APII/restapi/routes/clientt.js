@@ -1,7 +1,9 @@
-var express = require('express');
-var router = express.Router();
-var db = require('../db');
-var bodyParser = require('body-parser');
+const express = require('express');
+const router = express.Router();
+const db = require('../db');
+const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 router.use(bodyParser.json()); // for parsing application/json
 //router.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
@@ -38,15 +40,20 @@ router.post('/create', function(req, res, next) {
   var campus = req.body.campus;
   var typeC = req.body.type;
 
-  var sql = `INSERT INTO client (Nom, Prenom, Mail, MDP , Ville ,  type) VALUES ("${name}", "${pname}", "${mail}","${mp}","${campus}","${typeC}")`;
-  db.query(sql, function(err, result) {
-    if(err) {
-      console.log("Error: " + err);
-      res.status(500).send({ error: 'Something failed!' })
-    } else {
-      res.json({'status': 'success'})
-    }
-  })
+
+  //Encrypt password (add 100 Varchar size/values on database)
+  bcrypt.hash(mp, saltRounds, function(err, hash) {
+    var sql = `INSERT INTO client (Nom, Prenom, Mail, MDP , Ville ,  type) VALUES ("${name}", "${pname}", "${mail}","${hash}","${campus}","${typeC}")`;
+    db.query(sql, function(err, result) {
+      if(err) {
+        console.log("Error: " + err);
+        res.status(500).send({ error: 'Something failed!' })
+      } else {
+        res.json({'status': 'success'})
+      }
+    })
+
+  });
 });
 
 /*put method for update product*/
