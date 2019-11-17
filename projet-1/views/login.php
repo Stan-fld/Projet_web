@@ -11,7 +11,9 @@
 
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="../assets/css/index.css">
+
     <link rel="stylesheet" href="../assets/fontawesome/css/all.css">
     <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
 
@@ -72,56 +74,81 @@
 
 <div class="jumbotron card-body">
     <br>
-    <form class="container">
+    <form class="container-fluid">
+        <legende>connectez-vous</legende>
+        <br>
+        <br>
         <div class="col-sm-12 ">
             <div class="col-sm-6">
-                <input type="nom" name="mail" placeholder="mail" class="form-control"  />
-            </div>
+                <input type="email" name="mail" placeholder="mail" class="form-control"/>
+            </div><br>
             <div class="col-sm-6">
-                <input type="prenom" name="password" placeholder="mot de passe" class="form-control"  />
-            </div>
-            <div class="col-sm-6 center-block" >
-                <button type="submit" name="submit" value="create" class="btn btn-success">Create</button>
-            </div>
+                <input type="password" name="password" placeholder="mot de passe" class="form-control"/>
+            </div><br>
 
-            <div><a href="status" >mention légale</a> </div>
+            <div class="col-sm-6 center-block" >
+                <button type="submit" name="submit" value="create" class="btn btn-success">se connecter</button>
+            </div>
+            <br>
+
+            <div> <input type="checkbox" required name="case" > <a href="status.php" ><u>j'accepte les mentions légales </u></a> </div>
+        </div>
 
         </div>
     </form>
 </div>
 
-<footer class="container-fluid" >
-    <div class="row">
-        <div class="col-sm-1 text-center">
+
+
+
+<footer class="container-fluid" style="position: absolute">
+    <div class="row col-sm-12 text-center">
+
+        <div class="col-sm-3 ">
             <h2>
                 <a href="https://twitter.com/"><i class="fab fa-twitter"> </i></a>
             </h2>
         </div>
-        <div class="col-sm-1 text-center">
+        <div class="col-sm-3 ">
             <h2>
                 <a href="https://www.youtube.com/"><i class="fab fa-youtube"> </i></a>
             </h2>
         </div>
-        <div class="col-sm-1 text-center">
+        <div class="col-sm-3 ">
             <h2>
                 <a href="https://www.facebook.com/"><i class="fab fa-facebook-square"> </i></a>
             </h2>
         </div>
-        <div class="col-sm-1 text-center">
+        <div class="col-sm-3 ">
             <h2>
                 <a href="https://www.instagram.com/"><i class="fab fa-instagram"> </i></a>
             </h2>
         </div>
 
-        <div class="col-sm-7">
+    </div>
+    <br>
+    <br>
+    <div class="row col-sm-12 text-center">
+        <div class="col-sm-3 ">
             <h5>
-                <a href="status.php" >nos status</a><br>
-                <a href="https://discordapp.com/invite/wHcspBT" >discord</a><br>
-                <a href="https://github.com/cesi-it-aix/website" >github</a><br>
-                <a href="" >bde-aix@viacesi.fr</a><br>
+                <a href="status.php" >nos status</a>
             </h5>
         </div>
-
+        <div class="col-sm-3 ">
+            <h5>
+                <a href="https://discordapp.com/invite/wHcspBT" >discord</a>
+            </h5>
+        </div>
+        <div class="col-sm-3 ">
+            <h5>
+                <a href="https://github.com/cesi-it-aix/website" >github</a>
+            </h5>
+        </div>
+        <div class="col-sm-3 ">
+            <h5>
+                <a href="" >bde-aix@viacesi.fr</a>
+            </h5>
+        </div>
     </div>
 </footer>
 

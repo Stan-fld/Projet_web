@@ -68,11 +68,12 @@
         </h3>
     </nav>
 </div>
-<div id="jumbotron" class="jumbotron ">
+<div id="jumbotron2">
     <h2><br><br>
         Proposé aux associations déclarées par application de la<br>
         loi du 1er juillet 1901 et du décret du 16 août 1901.</h2>
-
+</div>
+<div  class="jumbotron ">
     <h3>ARTICLE 1- NOM</h3><br>
     <h4>Il est fondé entre les adhérents aux présents statuts une association régie par la loi du 1er juillet 1901 et le décret du 16 août 1901, ayant pour titre : Bureau des Etudiants de l'Arbois</h4>
     <h3>ARTICLE 2 - BUT OBJET</h3><br>
@@ -118,37 +119,53 @@
 
 
 <footer class="container-fluid" >
-    <div class="row">
-        <div class="col-sm-1 text-center">
+    <div class="row col-sm-12 text-center">
+
+        <div class="col-sm-3 ">
             <h2>
                 <a href="https://twitter.com/"><i class="fab fa-twitter"> </i></a>
             </h2>
         </div>
-        <div class="col-sm-1 text-center">
+        <div class="col-sm-3 ">
             <h2>
                 <a href="https://www.youtube.com/"><i class="fab fa-youtube"> </i></a>
             </h2>
         </div>
-        <div class="col-sm-1 text-center">
+        <div class="col-sm-3 ">
             <h2>
                 <a href="https://www.facebook.com/"><i class="fab fa-facebook-square"> </i></a>
             </h2>
         </div>
-        <div class="col-sm-1 text-center">
+        <div class="col-sm-3 ">
             <h2>
                 <a href="https://www.instagram.com/"><i class="fab fa-instagram"> </i></a>
             </h2>
         </div>
 
-        <div class="col-sm-7">
+    </div>
+    <br>
+    <br>
+    <div class="row col-sm-12 text-center">
+        <div class="col-sm-3 ">
             <h5>
-                <a href="status.php" >nos status</a><br>
-                <a href="https://discordapp.com/invite/wHcspBT" >discord</a><br>
-                <a href="https://github.com/cesi-it-aix/website" >github</a><br>
-                <a href="" >bde-aix@viacesi.fr</a><br>
+                <a href="status.php" >nos status</a>
             </h5>
         </div>
-
+        <div class="col-sm-3 ">
+            <h5>
+                <a href="https://discordapp.com/invite/wHcspBT" >discord</a>
+            </h5>
+        </div>
+        <div class="col-sm-3 ">
+            <h5>
+                <a href="https://github.com/cesi-it-aix/website" >github</a>
+            </h5>
+        </div>
+        <div class="col-sm-3 ">
+            <h5>
+                <a href="" >bde-aix@viacesi.fr</a>
+            </h5>
+        </div>
     </div>
 </footer>
 

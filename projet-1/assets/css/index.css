@@ -58,8 +58,8 @@ footer {
     left: 0;
     right: 0;
     background-color: black;
-    position: fixed;
-position: absolute;
+
+
 }
 footer a{
     color: white;
@@ -122,3 +122,4 @@ button:hover{
     background-color: #FFC252;
     color: white;
 }
+
