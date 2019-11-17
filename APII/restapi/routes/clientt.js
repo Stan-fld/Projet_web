@@ -37,7 +37,7 @@ router.post('/create', function(req, res, next) {
   var pname = req.body.prenom;
   var mail = req.body.mail;
   var mp = req.body.MDP;
-  var campus = req.body.campus;
+  var campus = req.body.Campus;
   var typeC = req.body.type;
 
 
