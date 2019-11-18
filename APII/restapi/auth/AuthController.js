@@ -36,7 +36,7 @@ router.use(bodyParser.json());
         expiresIn: 86400 
         });
         res.status(200).send({ auth: true, token: token });
-        return idClient
+        console.log({auth: true, token: token});
         });
     });
   });
