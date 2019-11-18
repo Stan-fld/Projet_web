@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
 
 router.use(bodyParser.json()); // for parsing application/json
-//router.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
+router.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
 
+
+// RETURNS ALL THE USERS IN THE DATABASE
 /* get method for fetch all products. */
 router.get('/', function(req, res, next) {
   var sql = "SELECT * FROM client";
@@ -19,6 +19,8 @@ router.get('/', function(req, res, next) {
   })
 });
 
+
+// GETS A SINGLE USER FROM THE DATABASE
 /*get method for fetch single product*/
 router.get('/:id', function(req, res, next) {
   var id = req.params.id;
@@ -31,6 +33,7 @@ router.get('/:id', function(req, res, next) {
   })
 });
 
+// CREATES A NEW USER
 /*post method for create product*/
 router.post('/create', function(req, res, next) {
   var name = req.body.name;
@@ -41,9 +44,7 @@ router.post('/create', function(req, res, next) {
   var typeC = req.body.type;
 
 
-  //Encrypt password (add 100 Varchar size/values on database)
-  bcrypt.hash(mp, saltRounds, function(err, hash) {
-    var sql = `INSERT INTO client (Nom, Prenom, Mail, MDP , Ville ,  type) VALUES ("${name}", "${pname}", "${mail}","${hash}","${campus}","${typeC}")`;
+  var sql = `INSERT INTO client (Nom, Prenom, Mail, MDP , Ville ,  type) VALUES ("${name}", "${pname}", "${mail}","${mp}","${campus}","${typeC}")`;
     db.query(sql, function(err, result) {
       if(err) {
         console.log("Error: " + err);
@@ -52,10 +53,10 @@ router.post('/create', function(req, res, next) {
         res.json({'status': 'success'})
       }
     })
-
-  });
 });
 
+
+// UPDATES A SINGLE USER IN THE DATABASE
 /*put method for update product*/
 router.put('/update/:id', function(req, res, next) {
   var id = req.params.id;
@@ -76,6 +77,7 @@ router.put('/update/:id', function(req, res, next) {
 });
 
 
+// DELETE A SINGLE USER IN THE DATABASE
 /*delete method for delete product*/
 router.delete('/delete/:id', function(req, res, next) {
   var id = req.params.id;
