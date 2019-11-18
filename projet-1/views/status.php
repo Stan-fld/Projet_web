@@ -96,20 +96,55 @@
 
         « Pour faire partie de l'association, il faut être agréé par le conseil d’administration, qui statue, lors de chacune de ses réunions, sur les demandes d'admission présentées. »</h4>
 
-    <h3>ARTICLE 3 - SIÈGE SOCIAL</h3><br>
-    <h4>Le siège social est fixé à Pavillon Martel, Europôle de l'Arbois, 13545 Aix-en-Provence Il pourra être transféré par simple décision du conseil d'administration ;</h4>
+    <h3>ARTICLE 7 - MEMBRES – COTISATIONS</h3><br>
+    <h4>Sont membres fondateur ceux qui ont participé à la constitution de l'association; ils sont dispensés de cotisations; Sont membres actifs et adherents ceux qui ont pris l'engagement de verser annuellement une somme de 1€ à titre de cotisation.</h4>
 
-    <h3>ARTICLE 3 - SIÈGE SOCIAL</h3><br>
-    <h4>Le siège social est fixé à Pavillon Martel, Europôle de l'Arbois, 13545 Aix-en-Provence Il pourra être transféré par simple décision du conseil d'administration ;</h4>
+    <h3>ARTICLE 8. - RADIATIONS</h3><br>
+    <h4>La qualité de membre se perd par :
 
-    <h3>ARTICLE 3 - SIÈGE SOCIAL</h3><br>
-    <h4>Le siège social est fixé à Pavillon Martel, Europôle de l'Arbois, 13545 Aix-en-Provence Il pourra être transféré par simple décision du conseil d'administration ;</h4>
+        La démission;
+        Le décès;
+        La radiation prononcée par le conseil d'administration pour non-paiement de la cotisation ou pour motif grave, l'intéressé ayant été invité à fournir des explications devant le bureau et/ou par écrit.
+        le fait de ne plus faire partie des élèves du Cesi d’Aix-en-Provence</h4>
 
-    <h3>ARTICLE 3 - SIÈGE SOCIAL</h3><br>
-    <h4>Le siège social est fixé à Pavillon Martel, Europôle de l'Arbois, 13545 Aix-en-Provence Il pourra être transféré par simple décision du conseil d'administration ;</h4>
+    <h3>ARTICLE 9. - AFFILIATION</h3><br>
+    <h4>La présente association peut adhérer à d’autres associations, unions ou regroupements par décision du conseil d’administration.</h4>
 
-    <h3>ARTICLE 3 - SIÈGE SOCIAL</h3><br>
-    <h4>Le siège social est fixé à Pavillon Martel, Europôle de l'Arbois, 13545 Aix-en-Provence Il pourra être transféré par simple décision du conseil d'administration ;</h4>
+
+    <h3>ARTICLE 10. - RESSOURCES</h3><br>
+    <h4>Les ressources de l'association comprennent :
+
+        Le montant des droits d'entrée et des cotisations ;<br>
+        Les subventions de l'Etat, des départements et des communes.<br>
+        Toutes les ressources autorisées par les lois et règlements en vigueur. »<br>
+        Des recettes provenant de la vente de produits, de services ou de prestations fournies par l'association.</h4>
+
+    <h3>ARTICLE 11 - ASSEMBLEE GENERALE ORDINAIRE</h3><br>
+    <h4>L'assemblée générale ordinaire comprend les membres actifs de l'association à quelque titre qu'ils soient.
+
+        Elle se réunit chaque année au mois de Septembre Quinze jours au moins avant la date fixée, les membres de l'association sont convoqués par les soins du secrétaire. L'ordre du jour figure sur les convocations. Le président, assisté des membres du conseil, préside l'assemblée et expose la situation morale ou l’activité de l'association. Le trésorier rend compte de sa gestion et soumet les comptes annuels (bilan, compte de résultat et annexe) à l'approbation de l'assemblée. L’assemblée générale fixe le montant des cotisations annuelles et du droit d’entrée à verser par les différentes catégories de membres.
+
+        Ne peuvent être abordés que les points inscrits à l'ordre du jour.
+
+        Les décisions sont prises à la majorité des voix des membres présents ou représentés.
+
+        Il est procédé, après épuisement de l'ordre du jour, au renouvellement des membres sortants du conseil.
+
+        Toutes les délibérations sont prises à main levée, excepté l’élection des membres du conseil.
+
+        Les décisions des assemblées générales s’imposent à tous les membres, y compris absents ou représentés.</h4>
+
+    <h3>ARTICLE 12 - ASSEMBLEE GENERALE EXTRAORDINAIRE</h3><br>
+    <h4>Si besoin est, ou sur la demande de la moitié plus un des membres inscrits, le président peut convoquer une assemblée générale extraordinaire, suivant les modalités prévues aux présents statuts et uniquement pour modification des statuts ou la dissolution ou pour des actes portant sur des immeubles.
+
+        Les modalités de convocation sont les mêmes que pour l’assemblée générale ordinaire.
+
+        Les délibérations sont prises à la majorité des membres présents.</h4>
+
+
+    <h3>ARTICLE 13 - CONSEIL D'ADMINISTRATION</h3><br>
+    <h4>L'association est dirigée par un conseil au minimum de 3 membres, élus pour 1 années par l'assemblée générale. Les membres sont rééligibles. En cas de vacances, le conseil pourvoit provisoirement au remplacement de ses membres. Il est procédé à leur remplacement définitif par la plus prochaine assemblée générale. Les pouvoirs des membres ainsi élus prennent fin à l'expiration le mandat des membres remplacés.
+
 </div>
 
 </div>
@@ -163,7 +198,7 @@
         </div>
         <div class="col-sm-3 ">
             <h5>
-                <a href="" >bde-aix@viacesi.fr</a>
+                <a href="https://www.documentslegaux.fr/commerce/accord-de-confidentialite/?loc=FR&pid=googlefrance-36451502329-255045048235_sl-ggkey_confidentialit%C3%A9&gclid=Cj0KCQiAn8nuBRCzARIsAJcdIfN2H_g-yWIJwu8vPp8tQMQl9BrOcQZlo0qQyG5sDoBwWipTPT4EPgUaAtgCEALw_wcB" >politique de confidentialité</a>
             </h5>
         </div>
     </div>

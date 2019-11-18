@@ -80,20 +80,20 @@
 
             <div class="col-sm-4">
                 <div class="card">
-                    <img src="../assets/img/logo-cesi1.png" class="card-img-top img-fluid">
-                    <div class="card-body"></div>
+                    <img src="../assets/img/pull-homme.jpg" class="card-img-top img-fluid">
+                    <div class="card-body"> pull homme </div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="card">
-                    <img src="../assets/img/logo-cesi1.png" class="card-img-top img-fluid">
-                    <div class="card-body"></div>
+                    <img src="../assets/img/chaussure1.jpg" class="card-img-top img-fluid">
+                    <div class="card-body"> chaussure </div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="card">
-                    <img src="../assets/img/logo-cesi1.png" class="card-img-top img-fluid">
-                    <div class="card-body"></div>
+                    <img src="../assets/img/shorts.jpg" class="card-img-top img-fluid">
+                    <div class="card-body"> short </div>
                 </div>
             </div>
         </div>
@@ -106,20 +106,22 @@
 
             <div class="col-sm-4">
                 <div class="card">
-                    <img src="../assets/img/logo-cesi1.png" class="card-img-top img-fluid">
-                    <div class="card-body"></div>
+                    <img src="../assets/img/casquette.jpg" class="card-img-top img-fluid">
+                     <div class="card-body">casquette </div>
                 </div>
             </div>
+
             <div class="col-sm-4">
                 <div class="card">
-                    <img src="../assets/img/logo-cesi1.png" class="card-img-top img-fluid">
-                    <div class="card-body"></div>
+                    <img src="../assets/img/sweet-l.png" class="card-img-top img-fluid">
+                    <div class="card-body">sweet a capuche </div>
                 </div>
             </div>
+
             <div class="col-sm-4">
                 <div class="card">
-                    <img src="../assets/img/logo-cesi1.png" class="card-img-top img-fluid">
-                    <div class="card-body"></div>
+                    <img src="../assets/img/veste.jpeg" class="card-img-top img-fluid">
+                    <div class="card-body"> veste </div>
                 </div>
             </div>
         </div>
@@ -152,7 +154,7 @@
         </div>
 
     </div>
-    <br>
+  <a href="https://editioneo.com/documents/4/conditions-generales-vente-ecommerce?gclid=Cj0KCQiAn8nuBRCzARIsAJcdIfMZxAbJF8U2TZo5rjnvGledUUQX32BEu-3fj9pW-ZM9xC0lMcx5U8AaAqOsEALw_wcB">conditions générales de ventes</a>
     <br>
     <div class="row col-sm-12 text-center">
         <div class="col-sm-3 ">

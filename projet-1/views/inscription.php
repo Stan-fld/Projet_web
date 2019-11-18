@@ -1,5 +1,5 @@
 <?php
-function callapi($method, $url, $data) {
+function callApi($method, $url, $data) {
 
     $ch = curl_init();
 
@@ -7,10 +7,9 @@ function callapi($method, $url, $data) {
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
     }
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'Content-Type: application/json',
-    ));
+    else {
+        curl_setopt($ch, CURLOPT_URL, $url);
+    }
 
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     $output = curl_exec($ch);
@@ -25,17 +24,11 @@ if(isset($_POST['submit']))
         $method = 'POST';
         $url = 'http://localhost:3000/clientt/create';
         $data = json_encode($_POST);
-        $result = callapi($method, $url, $data);
-
+        $result = callApi($method, $url, $data);
         header('location: welcome.php');
     }
-
 }
-
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html>
@@ -67,7 +60,6 @@ if(isset($_POST['submit']))
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"> </script>
 
     <script src="https://kit.fontawesome.com/e4c864528c.js" crossorigin="anonymous"></script>
-
 
 
 </head>
@@ -125,11 +117,11 @@ if(isset($_POST['submit']))
             </div>
             <br>
             <div class="col-sm-6">
-                <input type="email" name="mail" required placeholder="email" class="form-control" />
+                <input type="email" name="mail" required pattern=".*@.*\..*" placeholder="email" class="form-control" />
             </div>
             <br>
             <div class="col-sm-6">
-                <input type="password" name="MDP" required placeholder="password" class="form-control" />
+                <input type="password" name="MDP"  placeholder="password" class="form-control" />
             </div>
             <br>
             <div class="col-sm-6">

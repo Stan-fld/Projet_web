@@ -17,7 +17,7 @@
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-
+    <script src="../assets/js/index.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
@@ -34,7 +34,7 @@
 </head>
 
 <body>
-
+<script> alert('j accepte les cookies sur ce site')</script>
 <div id="bandeau" class="container-fluid">
     <nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
 
@@ -71,7 +71,7 @@
 
 <div id="jumbotron" class="jumbotron jumbotron-fluid">
     <div class="text-center">
-        <img src = "../assets/img/cesi.jpg" class="img-fluid">
+        <img src = "../assets/img/cesi.png" class="img-fluid">
     </div>
 </div>
 
@@ -81,11 +81,11 @@
 
             <div class="col-sm-4">
                 <div class="card">
-                    <img src="../assets/img/logo-cesi1.png" class="card-img-top img-fluid">
+                    <img src="../assets/img/even1.jpg" class="card-img-top img-fluid">
 
                     <div class="card-body">
-                        <h2 class="card-title">Foot</h2>
-                        <p class="card-text">compétion de foot inter promos</p>
+                        <h2 class="card-title">WEI</h2>
+                        <p class="card-text">soirée d'iter campus</p>
                         <button>
                             <a class="nav-link" href="photo.php">photo </a>
                         </button>
@@ -95,10 +95,10 @@
 
             <div class="col-sm-4">
                 <div class="card">
-                    <img src="../assets/img/logo-cesi1.png" class="card-img-top img-fluid">
+                    <img src="../assets/img/even2.jpg" class="card-img-top img-fluid">
 
                     <div class="card-body">
-                        <h2 class="card-title">WEI</h2>
+                        <h2 class="card-title">ASSOM</h2>
                         <p class="card-text">journé d'intégration</p>
                         <button>
                             <a class="nav-link" href="photo.php">photo </a>
@@ -109,10 +109,10 @@
 
             <div class="col-sm-4">
                 <div class="card">
-                    <img src="../assets/img/logo-cesi1.png" class="card-img-top img-fluid">
+                    <img src="../assets/img/even3.jpg" class="card-img-top img-fluid">
 
                     <div class="card-body">
-                        <h2 class="card-title">WEI</h2>
+                        <h2 class="card-title">paint ball</h2>
                         <p class="card-text">journé d'intégration</p>
                         <button>
                             <a class="nav-link" href="photo.php">photo </a>

@@ -72,7 +72,11 @@
     <h1 class="text-center">votre panier est vide</h1>
 </div>
 
+<div class="jumbotron text-center">
 
+    <h2>votre panier est vide</h2>
+
+</div>
 
 <footer class="container-fluid" style="position: absolute">
     <div class="row col-sm-12 text-center">
