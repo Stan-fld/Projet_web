@@ -36,12 +36,13 @@ router.use(bodyParser.json());
         expiresIn: 86400 
         });
         res.status(200).send({ auth: true, token: token });
-        console.log({auth: true, token: token});
+        console.log({ auth: true, token: token });
         });
     });
   });
 
-  router.get('/me', function(req, res , ) {
+  router.get('/me', function(req, res ) {
+    var id = req.body.idClient
     var token = req.headers['x-access-token'];
     if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
     
@@ -57,8 +58,12 @@ router.use(bodyParser.json());
     });
     });
   });
+  // add the middleware function
+router.use(function (clientt, req, res, next) {
+  res.status(200).send(clientt);
+});
 
-
+/*
   router.post('/login', function(req, res) {
 
     var mail = req.body.mail;
@@ -68,25 +73,30 @@ router.use(bodyParser.json());
     db.query(sql, function (err, clientt) {
         if (err) return res.status(500).send("There was a problem finding the user.");
         if (!clientt) return res.status(404).send("No user found.");
-    
-
-    var sql2 = `SELECT MDP FROM client WHERE MDP=("${mp}")`;
-    db.query(sql2, function (err, rows) {
-        var passwordIsValid = bcrypt.compareSync(toString(rows),toString(mp));
-        if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
         
-        var sql3 = `SELECT Id_Client FROM client WHERE MDP=("${mp}")`
-
-        db.query(sql3, function (err, Id_Client){
+          var sql2 = `SELECT MDP FROM client WHERE MDP=("${mp}")`;
+          db.query(sql2, function (err, clientt) {
+         if (!clientt) return res.status(401).send({ auth: false, token: null });
+        
+        
+          var sql3 = `SELECT Id_Client FROM client WHERE MDP=("${mp}")`
+          db.query(sql3, function (err, Id_Client){
             var token = jwt.sign({ id: Id_Client }, config.secret, {
             expiresIn: 86400 // expires in 24 hours
             })
             res.status(200).send({ auth: true, token: token });
             })
         })
-    });
+      })
 
 });
 
 
+router.get('/logout', function(clientt, req, res) {
+  res.status(200).send({ auth: false, token: null });
+});
+*/
   module.exports = router;
+
+
+  
