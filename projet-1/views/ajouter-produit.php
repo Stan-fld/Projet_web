@@ -1,4 +1,3 @@
-
 <?php
 /*callapi function start */
 function callapi($method, $url, $data) {
@@ -68,12 +67,12 @@ if(isset($_GET['action']) && $_GET['action'] == 'del') {
     $id = $_GET['id'];
 
     $method = 'DELETE';
-    $url = 'http://localhost:3000/article/delete/'.$id;
+    $url = 'http://localhost:3000/products/delete/'.$id;
     $data = NULL;
 
     $result = callapi($method, $url, $data);
 
-
+    header('location: index.php');
 }
 
 if(isset($_POST['submit']))
@@ -120,6 +119,7 @@ if(isset($_POST['submit']))
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/js/index.js">
     <link rel="stylesheet" href="../assets/fontawesome/css/all.css">
     <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
 
@@ -136,7 +136,6 @@ if(isset($_POST['submit']))
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"> </script>
 
     <script src="https://kit.fontawesome.com/e4c864528c.js" crossorigin="anonymous"></script>
-
 
 
 </head>
@@ -168,125 +167,159 @@ if(isset($_POST['submit']))
                 <li class="nav-item">
                     <a class="nav-link" href="login.php">login <i class="fas fa-sign-out-alt"></i></a>
                 </li>
-                <li>
-                    <br>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="ajouter-produit.php">ajouter un nouvel article <i  class="far fa-plus-square"></i></a>
-                </li>
             </ul>
         </div>
 
         <h3>
-            shop
+            inscription
         </h3>
     </nav>
-</div>
-<br>
-<br>
-
-<!--div> id="jumbotron2" class="jumbotron jumbotron-fluid">
-    <div class="container-fluid ">
-        <div class="row">
-
-            <div class="col-sm-4">
-                <div class="card">
-                    <img src="../assets/img/pull-homme.jpg" class="card-img-top img-fluid">
-                    <div class="card-body"> pull homme </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <img src="../assets/img/chaussure1.jpg" class="card-img-top img-fluid">
-                    <div class="card-body"> chaussure </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <img src="../assets/img/shorts.jpg" class="card-img-top img-fluid">
-                    <div class="card-body"> short </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</div-->
 
 
-<div id="jumbotron2" class="jumbotron jumbotron-fluid">
-
+<div class="jumbotron card-body">
     <br>
-    <div class="container col-sm-10">
-        <div class="row">
+    <form method="POST" class="container-fluid">
 
-            <?php $article = json_decode($article) ?>
-            <?php if(!empty($article)){ ?>
-                <?php foreach($article as $art) { ?>
-                    <div class="card jumbotron col-sm-4">
-                        <img class="img-fluid" src="<?php echo $art->URL ?>">
+        <legende>inscrivez-vous</legende>
+        <br>
+        <br>
 
-                        <div class="card-body" ><p><?php echo $art->NOM ?></br>
-                                Prix : <?php echo $art->PRIX ?>€</br>
-                                <?php echo $art->DESCRIPTION ?></p>
-                        </div>
-                    </div>
-                <?php } ?>
-            <?php } ?>
+        <div class="col-sm-12 ">
+            <div class="col-sm-6">
+                <input type="text" name="taille" placeholder="taille" class="form-control"  />
+            </div>
+            <br>
+            <div class="col-sm-6">
+                <input type="text" name="NOM" placeholder="Nom" class="form-control"  />
+            </div>
+            <br>
+            <div class="col-sm-6">
+                <input type="text" name="PRIX"  placeholder="prix" class="form-control" />
+            </div>
+            <br>
+            <div class="col-sm-6">
+                <input type="text" name="DESCRIPTION"  placeholder="description" class="form-control" />
+            </div>
+            <br>
+            <div class="col-sm-6">
+                <select class="form-control" type="text" name="Ville"  size="1" >
+                    <option>--Selectionnez votre centre--
+                    <option>Aix-en-Provence
+                    <option>Angoulême
+                    <option>Arras
+                    <option>Bordeaux
+                    <option>Brest
+                    <option>Caen
+                    <option>Châteauroux
+                    <option>Dijon
+                    <option>Grenoble
+                    <option>La Rochelle
+                    <option>Le Mans
+                    <option>Lille
+                    <option>Lyon
+                    <option>Montpellier
+                    <option>Nancy
+                    <option>Nantes
+                    <option>Nice
+                    <option>Orléans
+                    <option>Paris Nanterre
+                    <option>Pau
+                    <option>Reims
+                    <option>Rouen
+                    <option>Saint-Nantaire
+                    <option>Strasbourg
+                    <option>Toulouse
+                </select>
+            </div>
+            <br>
+           <div class="col-sm-6">
+            <div class="form-group">
+                <select class="form-control" type="text" name="URL" size="1">
+                    <option>--Selectionner un url d'image--</option>
 
-        </div>
-    </div>
+                    <?php $image = json_decode($image) ?>
+                    <?php if(!empty($image)){ ?>
+                        <?php foreach($image as $img) { ?>
+
+                            <option><?php echo $img->URL ?></option>
+
+                        <?php } ?>
+                    <?php } ?>
+
+                </select>
+            </div>
+           </div>
+            <br>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <select class="form-control" type="text" name="type" size="1">
+                        <option>--Selectionner un type d'article--</option>
+                        <option>accessoire</option>
+                        <option>vêtement</option>
+                    </select>
+                </div>
+                <br>
+
+                <div class="col-sm-6 center-block" >
+                    <button type="submit" name="submit" value="create" class="btn btn-success">créer</button>
+                </div>
+                <br>
+
+
+
+    </form>
 </div>
 
+    <footer class="container-fluid" style="position: relative">
+        <div class="row col-sm-12 text-center">
 
-    <footer class="container-fluid" style="position:relative">
-    <div class="row col-sm-12 text-center">
+            <div class="col-sm-3 ">
+                <h2>
+                    <a href="https://twitter.com/"><i class="fab fa-twitter"> </i></a>
+                </h2>
+            </div>
+            <div class="col-sm-3 ">
+                <h2>
+                    <a href="https://www.youtube.com/"><i class="fab fa-youtube"> </i></a>
+                </h2>
+            </div>
+            <div class="col-sm-3 ">
+                <h2>
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-square"> </i></a>
+                </h2>
+            </div>
+            <div class="col-sm-3 ">
+                <h2>
+                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"> </i></a>
+                </h2>
+            </div>
 
-        <div class="col-sm-3 ">
-            <h2>
-                <a href="https://twitter.com/"><i class="fab fa-twitter"> </i></a>
-            </h2>
         </div>
-        <div class="col-sm-3 ">
-            <h2>
-                <a href="https://www.youtube.com/"><i class="fab fa-youtube"> </i></a>
-            </h2>
+        <br>
+        <br>
+        <div class="row col-sm-12 text-center">
+            <div class="col-sm-3 ">
+                <h5>
+                    <a href="status.php" >nos status</a>
+                </h5>
+            </div>
+            <div class="col-sm-3 ">
+                <h5>
+                    <a href="https://discordapp.com/invite/wHcspBT" >discord</a>
+                </h5>
+            </div>
+            <div class="col-sm-3 ">
+                <h5>
+                    <a href="https://github.com/cesi-it-aix/website" >github</a>
+                </h5>
+            </div>
+            <div class="col-sm-3 ">
+                <h5>
+                    <a href="" >bde-aix@viacesi.fr</a>
+                </h5>
+            </div>
         </div>
-        <div class="col-sm-3 ">
-            <h2>
-                <a href="https://www.facebook.com/"><i class="fab fa-facebook-square"> </i></a>
-            </h2>
-        </div>
-        <div class="col-sm-3 ">
-            <h2>
-                <a href="https://www.instagram.com/"><i class="fab fa-instagram"> </i></a>
-            </h2>
-        </div>
+    </footer>
 
-    </div>
-  <a href="https://editioneo.com/documents/4/conditions-generales-vente-ecommerce?gclid=Cj0KCQiAn8nuBRCzARIsAJcdIfMZxAbJF8U2TZo5rjnvGledUUQX32BEu-3fj9pW-ZM9xC0lMcx5U8AaAqOsEALw_wcB">conditions générales de ventes</a>
-    <br>
-    <div class="row col-sm-12 text-center">
-        <div class="col-sm-3 ">
-            <h5>
-                <a href="status.php" >nos status</a>
-            </h5>
-        </div>
-        <div class="col-sm-3 ">
-            <h5>
-                <a href="https://discordapp.com/invite/wHcspBT" >discord</a>
-            </h5>
-        </div>
-        <div class="col-sm-3 ">
-            <h5>
-                <a href="https://github.com/cesi-it-aix/website" >github</a>
-            </h5>
-        </div>
-        <div class="col-sm-3 ">
-            <h5>
-                <a href="" >bde-aix@viacesi.fr</a>
-            </h5>
-        </div>
-    </div>
-</footer>
 </body>
 </html>

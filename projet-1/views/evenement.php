@@ -1,3 +1,37 @@
+<?php
+function callapi($method, $url, $data) {
+
+    $ch = curl_init();
+
+    if($method == 'POST') {
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    }
+
+
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Content-Type: application/json',
+    ));
+
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $output = curl_exec($ch);
+    curl_close ($ch);
+    return $output;
+}
+
+if(isset($_POST['submit']))
+{
+    if($_POST['submit'] == 'create')
+    {
+        $method = 'POST';
+        $url = 'http://localhost:3000/evenement/create';
+        $data = json_encode($_POST);
+        $result = callApi($method, $url, $data);
+
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -12,12 +46,13 @@
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/js/index.js">
     <link rel="stylesheet" href="../assets/fontawesome/css/all.css">
     <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="../assets/js/index.js"></script>
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
@@ -30,11 +65,10 @@
     <script src="https://kit.fontawesome.com/e4c864528c.js" crossorigin="anonymous"></script>
 
 
-
 </head>
 
 <body>
-<script> alert('j accepte les cookies sur ce site')</script>
+
 <div id="bandeau" class="container-fluid">
     <nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
 
@@ -53,9 +87,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="pannier.php">panier <i class="fas fa-shopping-basket"></i></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="evenement.php">ajouter un évenement <i class="far fa-map"></i></a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="inscription.php">register <i class="fas fa-sign-in-alt"></i></a>
                 </li>
@@ -66,69 +98,80 @@
         </div>
 
         <h3>
-            évenement
+            evenement
         </h3>
     </nav>
 </div>
+<div class="jumbotron card-body">
+    <br>
+    <form method="POST" class="container-fluid">
 
-<div id="jumbotron" class="jumbotron jumbotron-fluid">
-    <div class="text-center">
-        <img src = "../assets/img/cesi.png" class="img-fluid">
-    </div>
+        <legende>inscrivez-vous</legende>
+        <br>
+        <br>
+
+        <div class="col-sm-12 ">
+
+            <div class="col-sm-6">
+                <input type="name" name="name"  placeholder="name" class="form-control" />
+            </div>
+            <br>
+            <div class="col-sm-6">
+                <input type="date" name="date"  placeholder="date" class="form-control" />
+            </div>
+            <br>
+            <div class="col-sm-6">
+                <input type="url" name="url"  placeholder="url" class="form-control" />
+            </div>
+            <br>
+            <div class="col-sm-6">
+                <select class="form-control" type="text" name="Campus"  size="1" >
+                    <option>--Selectionnez votre centre--
+                    <option>Aix-en-Provence
+                    <option>Angoulême
+                    <option>Arras
+                    <option>Bordeaux
+                    <option>Brest
+                    <option>Caen
+                    <option>Châteauroux
+                    <option>Dijon
+                    <option>Grenoble
+                    <option>La Rochelle
+                    <option>Le Mans
+                    <option>Lille
+                    <option>Lyon
+                    <option>Montpellier
+                    <option>Nancy
+                    <option>Nantes
+                    <option>Nice
+                    <option>Orléans
+                    <option>Paris Nanterre
+                    <option>Pau
+                    <option>Reims
+                    <option>Rouen
+                    <option>Saint-Nantaire
+                    <option>Strasbourg
+                    <option>Toulouse
+                </select>
+            </div>
+            <br>
+            <div class="col-sm-6">
+                <br>
+                <div class="col-sm-6 center-block" >
+                    <button type="submit" name="submit" value="create" class="btn btn-success">m'inscrire</button>
+                </div>
+                <br>
+
+                <div> <input type="checkbox" required name="case" > <a href="status.php" ><u>j'accepte les mentions légales</u> </a> </div>
+            </div>
+
+    </form>
 </div>
 
-<div id="jumbotron2" class="jumbotron jumbotron-fluid">
-    <div class="container-fluid">
-        <div class="row">
-
-            <div class="col-sm-4">
-                <div class="card">
-                    <img src="../assets/img/even1.jpg" class="card-img-top img-fluid">
-
-                    <div class="card-body">
-                        <h2 class="card-title">WEI</h2>
-                        <p class="card-text">soirée d'iter campus</p>
-                        <button>
-                            <a class="nav-link" href="photo.php">photo </a>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-4">
-                <div class="card">
-                    <img src="../assets/img/even2.jpg" class="card-img-top img-fluid">
-
-                    <div class="card-body">
-                        <h2 class="card-title">ASSOM</h2>
-                        <p class="card-text">journé d'intégration</p>
-                        <button>
-                            <a class="nav-link" href="photo.php">photo </a>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-4">
-                <div class="card">
-                    <img src="../assets/img/even3.jpg" class="card-img-top img-fluid">
-
-                    <div class="card-body">
-                        <h2 class="card-title">paint ball</h2>
-                        <p class="card-text">journé d'intégration</p>
-                        <button>
-                            <a class="nav-link" href="photo.php">photo </a>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
 
 
-<footer class="container-fluid" >
+
+<footer class="container-fluid" style="position: absolute">
     <div class="row col-sm-12 text-center">
 
         <div class="col-sm-3 ">
