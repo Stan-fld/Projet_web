@@ -1,8 +1,106 @@
+<?php
+/*callapi function start */
+function callapi($method, $url, $data) {
 
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+
+    if($method == 'POST') {
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    }
+
+    if($method == 'PUT') {
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    }
+
+    if($method == 'DELETE') {
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+    }
+
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Content-Type: application/json',
+    ));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+    $output = curl_exec($ch);
+
+    curl_close ($ch);
+
+    return $output;
+}
+/*callapi function end */
+
+$result = '';
+
+
+// Call GET method fetch all
+$client = callapi($method = 'GET', $url = 'http://localhost:3000/clientt', $data = NULL);
+
+//Call GET method fetch single record
+if(isset($_GET['action']) && $_GET['action'] == 'edit') {
+
+    $id = $_GET['id'];
+
+    $method = 'GET';
+    $url = 'http://localhost:3000/article/'.$id;
+    $data = NULL;
+
+    $prod = callapi($method, $url, $data);
+    $prod = json_decode($prod);
+}
+
+//Call DELETE method
+if(isset($_GET['action']) && $_GET['action'] == 'del') {
+
+    $id = $_GET['id'];
+
+    $method = 'DELETE';
+    $url = 'http://localhost:3000/article/delete/'.$id;
+    $data = NULL;
+
+    $result = callapi($method, $url, $data);
+
+
+}
+
+if(isset($_POST['submit']))
+{
+    // Call POST method
+    if($_POST['submit'] == 'create')
+    {
+        $method = 'POST';
+        $url = 'http://localhost:3000/clientt/create';
+        $data = json_encode($_POST);
+
+        $result = callapi($method, $url, $data);
+
+
+    }
+
+    // Call PUT method
+    if($_POST['submit'] == 'update')
+    {
+        $id = $_POST['id'];
+
+        $method = 'PUT';
+        $url = 'http://localhost:3000/article/update/'.$id;
+        $data = json_encode($_POST);
+
+        $result = callapi($method, $url, $data);
+
+        header('location: index.php');
+    }
+
+}
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
+
     <title>
         accueil
     </title>
@@ -31,7 +129,7 @@
 
     <script src="https://kit.fontawesome.com/e4c864528c.js" crossorigin="anonymous"></script>
 
-
+    <?php  if (empty(session_id())) session_start(); ?>
 
 </head>
 
@@ -56,12 +154,23 @@
                     <a class="nav-link" href="pannier.php">panier <i class="fas fa-shopping-basket"></i></a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="inscription.php">register <i class="fas fa-sign-in-alt"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.php">login <i class="fas fa-sign-out-alt"></i></a>
-                </li>
+                <?php if (empty($_SESSION['token'])){ ?>
+                    <li class="nav-item" >
+                        <a class="nav-link" href="login.php">Connexion<i class="fas fa-sign-out-alt"></i></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="inscription.php">S'inscrire<i class="fas fa-sign-in-alt"></i></a>
+                    </li>
+                <?php } ?>
+
+                <?php if (isset($_SESSION['token'])){ ?>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="logout.php">Déconnexion<i class="fas fa-sign-in-alt"></i></a></li>
+                <?php } ?>
+
+                <?php if (isset($_SESSION['token'])){ ?>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"><?php echo "$_SESSION[Mail]" ?><br></a></li>
+                <?php } ?>
             </ul>
         </div>
 
@@ -74,27 +183,71 @@
 
 <div class="jumbotron card-body">
     <br>
-    <form class="container-fluid">
+    <form method="POST" class="container-fluid">
         <legende>connectez-vous</legende>
         <br>
         <br>
         <div class="col-sm-12 ">
             <div class="col-sm-6">
-                <input type="email" name="mail" placeholder="mail" class="form-control"/>
+                <input type="email" name="Mail" placeholder="mail" class="form-control"/>
             </div><br>
             <div class="col-sm-6">
-                <input type="password" name="password" placeholder="mot de passe" class="form-control"/>
+                <input type="password" name="MDP" placeholder="mot de passe" class="form-control"/>
             </div><br>
 
             <div class="col-sm-6 center-block" >
-                <button type="submit" name="submit" value="create" class="btn btn-success">se connecter</button>
+                <button type="submit" name="submit" class="btn btn-success">se connecter</button>
             </div>
             <br>
 
-            <div> <input type="checkbox" required name="case" > <a href="status.php" ><u>j'accepte les mentions légales </u></a> </div>
         </div>
 
         </div>
+
+<?php if(isset($_POST['Mail'])){ 
+    $_SESSION['Mail'] = $_POST['Mail'];?>
+
+<?php $client = json_decode($client) ?>
+<?php $mdp = NULL ?>
+<?php if(!empty($client)){ ?>
+    <?php foreach($client as $cl) { ?>
+        <?php if($cl->Mail == $_POST['Mail']){ ?>
+            <?php
+            $mdp = $cl->MDP;
+            $prenom = $cl->Prenom;
+            $nom = $cl->Nom;
+            $mail = $cl->Mail;
+            $ville = $cl->Ville;
+            $statut = $cl->type;
+            ?>
+        <?php } ?>
+    <?php } ?>
+<?php } ?>
+
+<?php
+//$isPasswordCorrect = password_verify($_POST['MDP'], $mdp);
+
+if (!$mdp){
+    echo '<p class="forgot">/!\ Mauvais identifiant ou mot de passe /!\</p>';
+}
+else {
+    if ($mdp == $_POST['MDP']) {
+        $token = bin2hex(random_bytes(32));
+        $_SESSION['token'] = $token;
+        $_SESSION['Prenom'] = $prenom;
+        $_SESSION['Nom'] = $nom;
+        $_SESSION['Mail'] = $mail;
+        $_SESSION['Ville'] = $ville;
+        $_SESSION['type'] = $statut;
+        header('Location: /views/welcome.php');
+        exit();
+    }
+    else {
+        echo '<p class="forgot">/!\ Mauvais identifiant ou mot de passe /!\</p>';
+    }
+}
+?>
+<?php } ?>
     </form>
 </div>
 
@@ -153,4 +306,5 @@
 </footer>
 
 </body>
+
 </html>

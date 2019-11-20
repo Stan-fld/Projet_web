@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b23e8e1-d64b-4277-9814-f4158d43e165" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/projet-1/views/ajouter-produit.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projet-1/views/evenement.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet-1/views/logout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet-1/assets/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/projet-1/assets/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-1/views/ajouter-produit.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-1/views/ajouter-produit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-1/views/contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-1/views/contact.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-1/views/evenement.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-1/views/evenement.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projet-1/views/inscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-1/views/inscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-1/views/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-1/views/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-1/views/pannier.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-1/views/pannier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-1/views/photo.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-1/views/photo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projet-1/views/shop.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-1/views/shop.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-1/views/status.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-1/views/status.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projet-1/views/welcome.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-1/views/welcome.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -70,7 +75,8 @@
       <workItem from="1573983607378" duration="3163000" />
       <workItem from="1574001379358" duration="9578000" />
       <workItem from="1574062968940" duration="9028000" />
-      <workItem from="1574167148984" duration="9262000" />
+      <workItem from="1574167148984" duration="31577000" />
+      <workItem from="1574266779488" duration="62000" />
     </task>
     <task id="LOCAL-00001" summary="new commit">
       <created>1573825715254</created>
@@ -93,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574066485444</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="site avec le shop">
+      <created>1574177614355</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1574177614355</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,6 +129,7 @@
     <MESSAGE value="new commit" />
     <MESSAGE value="front propre" />
     <MESSAGE value="finition site" />
-    <option name="LAST_COMMIT_MESSAGE" value="finition site" />
+    <MESSAGE value="site avec le shop" />
+    <option name="LAST_COMMIT_MESSAGE" value="site avec le shop" />
   </component>
 </project>

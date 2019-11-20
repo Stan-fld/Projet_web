@@ -96,7 +96,7 @@ if(isset($_POST['submit']))
         $id = $_POST['id'];
 
         $method = 'PUT';
-        $url = 'http://localhost:3000/products/update/'.$id;
+        $url = 'http://localhost:3000/article/update/'.$id;
         $data = json_encode($_POST);
 
         $result = callapi($method, $url, $data);
@@ -137,7 +137,7 @@ if(isset($_POST['submit']))
 
     <script src="https://kit.fontawesome.com/e4c864528c.js" crossorigin="anonymous"></script>
 
-
+    <?php  if (empty(session_id())) session_start(); ?>
 
 </head>
 
@@ -162,21 +162,29 @@ if(isset($_POST['submit']))
                     <a class="nav-link" href="pannier.php">panier <i class="fas fa-shopping-basket"></i></a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="inscription.php">register <i class="fas fa-sign-in-alt"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.php">login <i class="fas fa-sign-out-alt"></i></a>
-                </li>
-                <li>
-                    <br>
-                </li>
+                <?php if (empty($_SESSION['token'])){ ?>
+                    <li class="nav-item" >
+                        <a class="nav-link" href="login.php">Connexion<i class="fas fa-sign-out-alt"></i></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="inscription.php">S'inscrire<i class="fas fa-sign-in-alt"></i></a>
+                    </li>
+                <?php } ?>
+
+                <?php if (isset($_SESSION['token'])){ ?>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="logout.php">Déconnexion<i class="fas fa-sign-in-alt"></i></a></li>
+                <?php } ?>
+
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item ">
                     <a class="nav-link" href="ajouter-produit.php">ajouter un nouvel article <i  class="far fa-plus-square"></i></a>
                 </li>
             </ul>
         </div>
-
         <h3>
             shop
         </h3>
@@ -214,7 +222,6 @@ if(isset($_POST['submit']))
 
 
 <div id="jumbotron2" class="jumbotron jumbotron-fluid">
-
     <br>
     <div class="container col-sm-10">
         <div class="row">
@@ -228,7 +235,12 @@ if(isset($_POST['submit']))
                         <div class="card-body" ><p><?php echo $art->NOM ?></br>
                                 Prix : <?php echo $art->PRIX ?>€</br>
                                 <?php echo $art->DESCRIPTION ?></p>
+
+                            <div class="col-sm-6 text-center" >
+                                <a href="shop.php?id=<?php echo $art->id ?>&action=del" class="btn btn-danger btn-sm">Delete</a>
+                            </div>
                         </div>
+
                     </div>
                 <?php } ?>
             <?php } ?>

@@ -30,7 +30,7 @@
     <script src="https://kit.fontawesome.com/e4c864528c.js" crossorigin="anonymous"></script>
 
 
-
+    <?php  if (empty(session_id())) session_start(); ?>
 </head>
 
 <body>
@@ -54,12 +54,20 @@
                     <a class="nav-link" href="pannier.php">panier <i class="fas fa-shopping-basket"></i></a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="inscription.php">register <i class="fas fa-sign-in-alt"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.php">login <i class="fas fa-sign-out-alt"></i></a>
-                </li>
+                <?php if (empty($_SESSION['token'])){ ?>
+                    <li class="nav-item" >
+                        <a class="nav-link" href="login.php">Connexion<i class="fas fa-sign-out-alt"></i></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="inscription.php">S'inscrire<i class="fas fa-sign-in-alt"></i></a>
+                    </li>
+                <?php } ?>
+
+                <?php if (isset($_SESSION['token'])){ ?>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="logout.php">Déconnexion<i class="fas fa-sign-in-alt"></i></a></li>
+                <?php } ?>
+
             </ul>
         </div>
 

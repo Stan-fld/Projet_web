@@ -1,4 +1,106 @@
+<?php
+/*callapi function start */
+function callapi($method, $url, $data) {
 
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+
+    if($method == 'POST') {
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    }
+
+    if($method == 'PUT') {
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    }
+
+    if($method == 'DELETE') {
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+    }
+
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Content-Type: application/json',
+    ));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+    $output = curl_exec($ch);
+
+    curl_close ($ch);
+
+    return $output;
+}
+/*callapi function end */
+
+$result = '';
+
+// Call GET method fetch all records
+// Call GET method fetch all images
+$image = callapi($method = 'GET', $url = 'http://localhost:3000/evenement/image', $data = NULL);
+
+
+
+// Call GET method fetch all articles
+$article = callapi($method = 'GET', $url = 'http://localhost:3000/evenement/', $data = NULL);
+
+
+
+//Call GET method fetch single record
+if(isset($_GET['action']) && $_GET['action'] == 'edit') {
+
+    $id = $_GET['id'];
+
+    $method = 'GET';
+    $url = 'http://localhost:3000/evenement/'.$id;
+    $data = NULL;
+
+    $prod = callapi($method, $url, $data);
+    $prod = json_decode($prod);
+}
+
+//Call DELETE method
+if(isset($_GET['action']) && $_GET['action'] == 'del') {
+
+    $id = $_GET['id'];
+
+    $method = 'DELETE';
+    $url = 'http://localhost:3000/evenement/delete/'.$id;
+    $data = NULL;
+
+    $result = callapi($method, $url, $data);
+
+
+}
+
+if(isset($_POST['submit']))
+{
+    // Call POST method
+    if($_POST['submit'] == 'create')
+    {
+        $method = 'POST';
+        $url = 'http://localhost:3000/evenement/create';
+        $data = json_encode($_POST);
+
+        $result = callapi($method, $url, $data);
+
+
+    }
+
+    // Call PUT method
+    if($_POST['submit'] == 'update')
+    {
+        $id = $_POST['id'];
+
+        $method = 'PUT';
+        $url = 'http://localhost:3000/evenement/update/'.$id;
+        $data = json_encode($_POST);
+
+        $result = callapi($method, $url, $data);
+
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -29,12 +131,12 @@
 
     <script src="https://kit.fontawesome.com/e4c864528c.js" crossorigin="anonymous"></script>
 
-
+    <?php  if (empty(session_id())) session_start(); ?>
 
 </head>
 
 <body>
-<script> alert('j accepte les cookies sur ce site')</script>
+<!--script> alert('j accepte les cookies sur ce site')</script-->
 <div id="bandeau" class="container-fluid">
     <nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
 
@@ -53,18 +155,32 @@
                 <li class="nav-item">
                     <a class="nav-link" href="pannier.php">panier <i class="fas fa-shopping-basket"></i></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="evenement.php">ajouter un évenement <i class="far fa-map"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="inscription.php">register <i class="fas fa-sign-in-alt"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.php">login <i class="fas fa-sign-out-alt"></i></a>
-                </li>
+
+                <?php if (empty($_SESSION['token'])){ ?>
+                    <li class="nav-item" >
+                        <a class="nav-link" href="login.php">Connexion<i class="fas fa-sign-out-alt"></i></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="inscription.php">S'inscrire<i class="fas fa-sign-in-alt"></i></a>
+                    </li>
+                <?php } ?>
+
+                <?php if (isset($_SESSION['token'])){ ?>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="logout.php">Déconnexion<i class="fas fa-sign-in-alt"></i></a></li>
+                
+                <?php } ?>
+
             </ul>
         </div>
 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="evenement.php">ajouter un nouvel evenement <i  class="far fa-plus-square"></i></a>
+                </li>
+            </ul>
+        </div>
         <h3>
             évenement
         </h3>
@@ -73,11 +189,11 @@
 
 <div id="jumbotron" class="jumbotron jumbotron-fluid">
     <div class="text-center">
-        <img src = "../assets/img/cesi.png" class="img-fluid">
+        <img src = "../assets/img/cesi.png" class="img-fluid" >
     </div>
 </div>
 
-<div id="jumbotron2" class="jumbotron jumbotron-fluid">
+<!--div id="jumbotron2" class="jumbotron jumbotron-fluid">
     <div class="container-fluid">
         <div class="row">
 
@@ -125,8 +241,33 @@
 
         </div>
     </div>
-</div>
+</div-->
 
+<div id="jumbotron2" class="jumbotron jumbotron-fluid">
+    <br>
+    <div class="container col-sm-10">
+        <div class="row">
+
+            <?php $evenement = json_decode($evenement) ?>
+            <?php if(!empty($evenement)){ ?>
+                <?php foreach($evenement as $art) { ?>
+                    <div class="card jumbotron col-sm-4">
+                        <img class="img-fluid" src="<?php echo $art->URL ?>">
+
+                        <div class="card-body" ><p><?php echo $art->nom ?></br>
+                                nom : <?php echo $art->nom ?></br>
+                               date :  <?php echo $art->date ?></p>
+                        </div>
+                        <div class="col-sm-6 text-center" >
+                            <button type="submit" name="del" value="del" class="btn btn-danger">supprimer le produit</button>
+                        </div>
+                    </div>
+                <?php } ?>
+            <?php } ?>
+
+        </div>
+    </div>
+</div>
 
 <footer class="container-fluid" >
     <div class="row col-sm-12 text-center">

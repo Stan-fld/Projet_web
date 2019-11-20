@@ -137,6 +137,7 @@ if(isset($_POST['submit']))
 
     <script src="https://kit.fontawesome.com/e4c864528c.js" crossorigin="anonymous"></script>
 
+    <?php  if (empty(session_id())) session_start(); ?>
 
 </head>
 
@@ -161,26 +162,29 @@ if(isset($_POST['submit']))
                     <a class="nav-link" href="pannier.php">panier <i class="fas fa-shopping-basket"></i></a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="inscription.php">register <i class="fas fa-sign-in-alt"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.php">login <i class="fas fa-sign-out-alt"></i></a>
-                </li>
+                <?php if (empty($_SESSION['token'])){ ?>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="login.php">Connexion<i class="fas fa-sign-out-alt"></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="inscription.php">S'inscrire<i class="fas fa-sign-in-alt"></i></a></li>
+                <?php } ?>
+
+                <?php if (isset($_SESSION['token'])){ ?>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="logout.php">Déconnexion<i class="fas fa-sign-in-alt"></i></a></li>
+                <?php } ?>
+
             </ul>
         </div>
 
         <h3>
-            inscription
+            nouvel article
         </h3>
     </nav>
 
 
-<div class="jumbotron card-body">
-    <br>
-    <form method="POST" class="container-fluid">
+<div class="jumbotron jumbotron">
 
-        <legende>inscrivez-vous</legende>
+    <form method="POST" class="container-fluid card-body" >
+
+        <legende>ajouter un nouvel objet a la boutique</legende>
         <br>
         <br>
 
@@ -249,7 +253,7 @@ if(isset($_POST['submit']))
                 </select>
             </div>
            </div>
-            <br>
+
             <div class="col-sm-6">
                 <div class="form-group">
                     <select class="form-control" type="text" name="type" size="1">
@@ -260,17 +264,15 @@ if(isset($_POST['submit']))
                 </div>
                 <br>
 
-                <div class="col-sm-6 center-block" >
+                <div class="col-sm-6 text-center" >
                     <button type="submit" name="submit" value="create" class="btn btn-success">créer</button>
                 </div>
                 <br>
-
-
-
     </form>
 </div>
 
-    <footer class="container-fluid" style="position: relative">
+
+    <footer class="container-fluid" style="position:relative">
         <div class="row col-sm-12 text-center">
 
             <div class="col-sm-3 ">
@@ -295,7 +297,7 @@ if(isset($_POST['submit']))
             </div>
 
         </div>
-        <br>
+        <a href="https://editioneo.com/documents/4/conditions-generales-vente-ecommerce?gclid=Cj0KCQiAn8nuBRCzARIsAJcdIfMZxAbJF8U2TZo5rjnvGledUUQX32BEu-3fj9pW-ZM9xC0lMcx5U8AaAqOsEALw_wcB">conditions générales de ventes</a>
         <br>
         <div class="row col-sm-12 text-center">
             <div class="col-sm-3 ">

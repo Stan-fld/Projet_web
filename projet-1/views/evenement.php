@@ -1,33 +1,102 @@
 <?php
+/*callapi function start */
 function callapi($method, $url, $data) {
 
     $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
 
     if($method == 'POST') {
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
     }
 
+    if($method == 'PUT') {
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    }
+
+    if($method == 'DELETE') {
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+    }
 
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         'Content-Type: application/json',
     ));
-
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
     $output = curl_exec($ch);
+
     curl_close ($ch);
+
     return $output;
+}
+/*callapi function end */
+
+$result = '';
+
+// Call GET method fetch all records
+// Call GET method fetch all images
+$image = callapi($method = 'GET', $url = 'http://localhost:3000/evenement/image', $data = NULL);
+
+
+
+// Call GET method fetch all articles
+$article = callapi($method = 'GET', $url = 'http://localhost:3000/evenement/', $data = NULL);
+
+
+
+//Call GET method fetch single record
+if(isset($_GET['action']) && $_GET['action'] == 'edit') {
+
+    $id = $_GET['id'];
+
+    $method = 'GET';
+    $url = 'http://localhost:3000/evenement/'.$id;
+    $data = NULL;
+
+    $prod = callapi($method, $url, $data);
+    $prod = json_decode($prod);
+}
+
+//Call DELETE method
+if(isset($_GET['action']) && $_GET['action'] == 'del') {
+
+    $id = $_GET['id'];
+
+    $method = 'DELETE';
+    $url = 'http://localhost:3000/evenement/delete/'.$id;
+    $data = NULL;
+
+    $result = callapi($method, $url, $data);
+
+
 }
 
 if(isset($_POST['submit']))
 {
+    // Call POST method
     if($_POST['submit'] == 'create')
     {
         $method = 'POST';
         $url = 'http://localhost:3000/evenement/create';
         $data = json_encode($_POST);
-        $result = callApi($method, $url, $data);
+
+        $result = callapi($method, $url, $data);
+
+
+    }
+
+    // Call PUT method
+    if($_POST['submit'] == 'update')
+    {
+        $id = $_POST['id'];
+
+        $method = 'PUT';
+        $url = 'http://localhost:3000/evenement/update/'.$id;
+        $data = json_encode($_POST);
+
+        $result = callapi($method, $url, $data);
 
     }
 }
@@ -64,7 +133,7 @@ if(isset($_POST['submit']))
 
     <script src="https://kit.fontawesome.com/e4c864528c.js" crossorigin="anonymous"></script>
 
-
+    <?php  if (empty(session_id())) session_start(); ?>
 </head>
 
 <body>
@@ -75,7 +144,6 @@ if(isset($_POST['submit']))
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333" aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item ">
@@ -88,12 +156,23 @@ if(isset($_POST['submit']))
                     <a class="nav-link" href="pannier.php">panier <i class="fas fa-shopping-basket"></i></a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="inscription.php">register <i class="fas fa-sign-in-alt"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.php">login <i class="fas fa-sign-out-alt"></i></a>
-                </li>
+                <?php if (empty($_SESSION['token'])){ ?>
+                    <li class="nav-item" >
+                        <a class="nav-link" href="login.php">Connexion<i class="fas fa-sign-out-alt"></i></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="inscription.php">S'inscrire<i class="fas fa-sign-in-alt"></i></a>
+                    </li>
+                <?php } ?>
+
+                <?php if (isset($_SESSION['token'])){ ?>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="logout.php">Déconnexion<i class="fas fa-sign-in-alt"></i></a></li>
+                
+                <?php } ?>
+            </ul>
+        </div>
+
             </ul>
         </div>
 
@@ -121,11 +200,25 @@ if(isset($_POST['submit']))
             </div>
             <br>
             <div class="col-sm-6">
-                <input type="url" name="url"  placeholder="url" class="form-control" />
+                <div class="form-group">
+                    <select class="form-control" type="text" name="URL" size="1">
+                        <option>--Selectionner un url d'image--</option>
+
+                        <?php $image = json_decode($image) ?>
+                        <?php if(!empty($image)){ ?>
+                            <?php foreach($image as $img) { ?>
+
+                                <option><?php echo $img->URL ?></option>
+
+                            <?php } ?>
+                        <?php } ?>
+
+                    </select>
+                </div>
             </div>
             <br>
             <div class="col-sm-6">
-                <select class="form-control" type="text" name="Campus"  size="1" >
+                <select class="form-control" type="text" name="VILLE"  size="1" >
                     <option>--Selectionnez votre centre--
                     <option>Aix-en-Provence
                     <option>Angoulême
@@ -171,7 +264,7 @@ if(isset($_POST['submit']))
 
 
 
-<footer class="container-fluid" style="position: absolute">
+<footer class="container-fluid" style="position: absolute" >
     <div class="row col-sm-12 text-center">
 
         <div class="col-sm-3 ">
