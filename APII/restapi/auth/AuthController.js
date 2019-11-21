@@ -31,14 +31,14 @@ router.post('/register', function(req, res, next) {
 						message: "Vous etes bien inscrits! connectez vous"
 					});
 				}else{
-					res.status(200).send({
+					res.status(500).send({
 						succes: false,
 						message: "Une erreur technique est survenue, réessayez plus tard ou contactez votre administarteur"
 					});
 				}
 			});
 		}else{
-			res.status(200).send({
+			res.status(500).send({
 				succes: false,
 				message: "mail already used"
 			});
@@ -66,7 +66,7 @@ router.post('/me', function(req, res) {
 				});
 			});
 		}else{
-			res.status(200).send({
+			res.status(500).send({
 				succes: false, 
 				client: "none",
 				message: "not auth"
@@ -101,7 +101,7 @@ router.post('/login', function(req, res) {
 						, client: client[0]
 					});
 				} else {// cas mdp faux 
-					res.status(200).send({
+					res.status(500).send({
 						auth: false, 
 						client: "none",
 						message: "Mail ou mdp faux" 
@@ -109,7 +109,7 @@ router.post('/login', function(req, res) {
 				}
 			});
 		}else {// cas mail faux  
-			res.status(200).send({
+			res.status(500).send({
 				auth: false, 
 				client: "none",
 				message: "Mail ou mdp faux" 
